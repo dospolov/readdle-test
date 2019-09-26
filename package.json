@@ -1,0 +1,81 @@
+{
+  "name": "readdle-test",
+  "version": "0.1.1",
+  "description": "Readdle test task",
+  "license": "MIT",
+  "author": {
+    "name": "Marat Dospolov"
+  },
+  "main": "public/main.js",
+  "scripts": {
+    "dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "cross-env PUBLIC_URL=./ rescripts build",
+    "prestart": "tsc -p electron/tsconfig.json",
+    "start": "rescripts start",
+    "tsc": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/dompurify": "^0.0.33",
+    "@types/he": "^1.1.0",
+    "@types/node-fetch": "^2.5.2",
+    "dompurify": "^2.0.2",
+    "electron-debug": "^3.0.1",
+    "electron-is-dev": "^1.1.0",
+    "electron-log": "^3.0.8",
+    "electron-store": "^5.0.0",
+    "file-saver": "^2.0.2",
+    "graphql": "^14.5.7",
+    "he": "^1.2.0",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@hot-loader/react-dom": "^16.9.0",
+    "@rescripts/cli": "^0.0.12",
+    "@rescripts/rescript-use-babel-config": "^0.0.8",
+    "@types/node": "12.7.6",
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
+    "@typescript-eslint/eslint-plugin": "2.3.1",
+    "@typescript-eslint/parser": "2.3.1",
+    "antd": "^3.23.4",
+    "babel-plugin-import": "^1.12.2",
+    "concurrently": "^4.1.2",
+    "cross-env": "^6.0.0",
+    "electron": "^6.0.10",
+    "electron-builder": "^21.2.0",
+    "electron-devtools-installer": "^2.2.4",
+    "eslint": "6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "node-fetch": "^2.6.0",
+    "prettier": "^1.18.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-hot-loader": "^4.12.14",
+    "react-scripts": "3.1.2",
+    "stylelint": "^11.0.0",
+    "stylelint-config-prettier": "^6.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "typescript": "3.6.3",
+    "wait-on": "^3.3.0",
+    "webpack": "4.40.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
