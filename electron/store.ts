@@ -2,6 +2,17 @@ import { ipcMain } from 'electron';
 import Store from 'electron-store';
 import fetch from 'node-fetch';
 
+type Email = {
+  id: number;
+  date: number;
+  from: string;
+  subject: string;
+  content: string;
+  isUnread: boolean;
+  folder: string;
+  isDeleted: boolean;
+};
+
 const store = new Store();
 store.set('currentFolder', '');
 store.set('emails', []);
@@ -22,7 +33,7 @@ export default () => {
 
     return store
       .get('emails')
-      .filter((email: any) =>
+      .filter((email: Email) =>
         currentFolder === 'trash'
           ? email.isDeleted
           : email.folder === currentFolder && !email.isDeleted,
@@ -34,10 +45,10 @@ export default () => {
     event.reply('sendEmailList', filterEmailsByFolder(currentFolder));
   });
 
-  const updateEmail = (id: number, flagName: string) =>
+  const updateEmail = (id: number, flagName: keyof Email) =>
     store.set(
       'emails',
-      store.get('emails').map((email: any) =>
+      store.get('emails').map((email: Email) =>
         email.id === id
           ? {
               ...email,
